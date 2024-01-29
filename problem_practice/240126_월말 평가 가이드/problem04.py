@@ -12,6 +12,8 @@ def turn(temperature_list):
     
     all_list = {}
     all_list.update({'maximum' : maximum_list, 'minimum' : minimum_list})
+    # 다 잘 짜놓고 어째서 변수를 정확하게 안 적어줘서 다른 결과값이 나오게 하는거야...
+    # 그렇게 짜더라도 값이 이상하면 차근차근 뇌디버깅해서 에러 알아내야하는데 그게 아직도 잘 안된다
 
     return all_list
 

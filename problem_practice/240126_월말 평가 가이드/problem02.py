@@ -7,6 +7,8 @@ def over(score_list):
         if score >= 60 :
             cnt += 1
     return cnt
+    # return 적는 거 빼먹어서 오류 떴었다
+    # 함수에 그런 기본적인 실수를 하다니 반성하자
 
 
 

@@ -1,7 +1,20 @@
 ############## 주의 ##############
 # 입력을 받기위한 input 함수는 절대 사용하지 않습니다.
 def is_id_valid(user):
-    pass
+    end_char = user['id'][-1]
+    try :
+        if 0 <= int(end_char) <= 9 :
+            result = True
+        else :
+            result = False
+    except ValueError:
+        # try - except는 사실 시험 범위에 안 들어가는데, 
+        # 이걸 안 쓰고 푸는 방법이 있을텐데 뭐가 있을까?
+        result = False
+
+    
+    return result
+        
     # 여기에 코드를 작성합니다.
 
 
