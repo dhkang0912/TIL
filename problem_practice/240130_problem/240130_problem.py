@@ -56,8 +56,8 @@
 #     else: print("Lose")
 
 
-#<baby-gin>
-
+# <baby-gin>
+#
 # N=6
 # def babygin(n_numbers):
 #     counts =[0]*12
