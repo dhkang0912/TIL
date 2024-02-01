@@ -38,26 +38,26 @@
 
 
 # 이진 검색
-# def binsearch(lst, N, key) :
-#     start = 0
-#     end = N - 1
-#     while start <= end :
-#         m = (start + end) // 2
-#         if lst[m] == key :
-#             return  m
-#         if lst[m] > key :
-#             end = m - 1
-#         else :
-#             start = m + 1
-#
-#
-# numbers = [4, 9, 11, 23, 2, 19, 7]
-# numbers.sort()
-# N = len(numbers)
-# print(binsearch(numbers, N, 2))
-# print(binsearch(numbers, N, 23))
-# print(binsearch(numbers, N, 9))
-# print(binsearch(numbers, N, 7))
+def binsearch(lst, N, key) :
+    start = 0
+    end = N - 1
+    while start <= end :
+        m = (start + end) // 2
+        if lst[m] == key :
+            return  m
+        if lst[m] > key :
+            end = m - 1
+        else :
+            start = m + 1
+
+
+numbers = [4, 9, 11, 23, 2, 19, 7]
+numbers.sort()
+N = len(numbers)
+print(binsearch(numbers, N, 2))
+print(binsearch(numbers, N, 23))
+print(binsearch(numbers, N, 9))
+print(binsearch(numbers, N, 7))
 
 
 # numbers의 데이터를 정렬한 후 정렬 결과를 리스트로 return

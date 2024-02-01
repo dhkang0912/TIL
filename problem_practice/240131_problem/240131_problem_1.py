@@ -76,6 +76,24 @@
 #     print(f'#{tc} {result}')
 
 # [S/W 문제해결 기본] 2일차 - Sum
+# 보충 쌤 코드
+# for _ in range(10):
+#     tc = int(input())
+#     galo = 0 #가로의 합 초기화
+#     selo = [0 for i in range(100)] #세로의 합을 저장할 리스트 초기화
+#     diag1 = 0 # 아래 오른쪽 대각선 합 초기화
+#     diag2 = 0 # 아래 왼쪽 대각선 합 초기화
+#     for i in range(100):
+#         line = list(map(int, input().split()))
+#         # 가로의 합
+#         galo = max(galo, sum(line))
+#         diag1 += line[i]
+#         diag2 += line [99 i]
+#         for j in range(100):
+#             selo[j] += line[j]
+
+
+
 # 1. 테스트 케이스는 10개가 주어진다.
 # 2. 테스트 케이스를 순회한다.
 # 3. 100*100의 2차원 배열이 주어진다. -> 나열된 숫자들을 2차원 배열로 만든다.
@@ -104,10 +122,71 @@
 
     # 3-4) 오른쪽 아래 대각선의 합을 구한다.
         # 각 대각선 arr[0,0] arr[1,1] arr[2,2] ....arr[99,99]
+        #  -> arr[i,i]
 
     # 3-5) 왼쪽 아래 대각선의 합을 구한다.
+        # arr[0, -1] arr[1, -2]arr[2, -3] ... arr[99, -100]
+        # -> arr[i, (-i) -1]
 
 # 위 각 합들을 비교하여 가장 큰 수를 구한다.
+
+import sys
+sys.stdin = open("240131_input.txt", "r")
+
+T = 10
+
+for tc in range(1, T+1) :
+    t_num = int(input())
+    n = 100 # 100*100의 배열
+    arr = [list(map(int,input().split())) for _ in range(n)]
+    # n개의 데이터를 받은 후 이걸 n번 반복하여 쌓아서 저장 (n*n 이차원 배열)
+    # print(arr)
+
+    max_row = 0
+    for row in range(n):  # 0~99번 row를 순회
+        sum_row = 0
+        for col in range(n):  # 0~99번 col을 순회
+            sum_row += arr[row][col]
+        if max_row < sum_row:
+            max_row = sum_row
+
+    max_col = 0
+    for col in range(n):
+        sum_col = 0
+        for row in range(n):
+            sum_col += arr[row][col]
+        if max_col < sum_col:
+            max_col = sum_col
+
+    sum_right_bottom = 0
+    for i in range(n):
+        sum_right_bottom += arr[i][i]
+
+    sum_left_bottom = 0
+    for i in range(n):
+        sum_left_bottom += arr[i][99-i]
+
+    compared_value = [max_row, max_col, sum_right_bottom, sum_left_bottom]
+
+    real_max_value = 0
+    for value_ in compared_value:
+        if real_max_value < value_:
+            real_max_value = value_
+
+    print(f'#{tc} {real_max_value}')
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
