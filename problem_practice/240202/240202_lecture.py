@@ -200,14 +200,13 @@
 #             # 주변 풍선의 꽃가루
 #             for k in range(4) : # 주변 풍선의 인덱스 ni, nj
 #                 for l in range(1, arr[i][j]+1)
-#                 ni = i + di[k] *l
-#                 nj = j + dj[k] *l
-#                 if 0 <= ni < N and 0 <= nj < M :
-#                     cnt += arr[ni][nj]
+    #                 ni = i + di[k] *l
+    #                 nj = j + dj[k] *l
+    #                 if 0 <= ni < N and 0 <= nj < M :
+    #                     cnt += arr[ni][nj]
 #             # 꽃가루를 최대값과 비교
 #             if maxv < cnt :
 #                 maxv = cnt
 #     print(f'# {tc+1} {maxv}')
-
 
 
