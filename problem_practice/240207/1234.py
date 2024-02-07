@@ -34,4 +34,4 @@ for tc in range(1, T+1):
         else:
             password.append(num)
 
-    print(f'#{tc}', *password)
+    print(f'#{tc}', ''.join(password))
