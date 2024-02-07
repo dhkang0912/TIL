@@ -9,30 +9,33 @@
 import sys
 sys.stdin = open("1216_input.txt","r")
 
-T = int(input())
-for tc in range(1, T+1):
+
+def check(arr, N, M):
+    for row in range(N):
+        for start in range(N - M + 1):
+            if arr[row][start:start + M] == arr[row][start:start + M][::-1]:
+                return M
+
+    for col in range(N):
+        col_list = []
+        for row in range(N):
+            col_list.append(arr[row][col])
+        for start in range(N - M + 1):
+            if col_list[start:start + M] == col_list[start:start + M][::-1]:
+                return M
+    return -1
+
+
+T = 10
+for _ in range(1, T+1):
+    tc = int(input())
     N = 100
     arr = [list(map(str, input())) for _ in range(N)]
 
-    def check(arr,N,M):
-        for row in range(N):
-            for start in range(N-M+1):
-                if arr[row][start:start+M] == arr[row][start:start+M][::-1]:
-                    return M
-
-
-        for col in range(N):
-            col_list = []
-            for row in range(N):
-                col_list.append(arr[row][col])
-            for start in range(N-M+1):
-                if col_list[start:start+M+1] == col_list[start:start+M+1][::-1]:
-                    return M
-        return -1
-
     for M in range(99,0,-1):
-        print(check(arr, N, M))
-
+        if check(arr,N,M) > 0:
+            print(f'#{tc} {check(arr, N, M)}')
+            break
 
 
 
