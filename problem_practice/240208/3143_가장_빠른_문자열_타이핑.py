@@ -9,15 +9,21 @@ sys.stdin = open("3143_input.txt", "r")
 
 T = int(input())
 for tc in range(1, T+1):
-    A, B = input().split()
-    A = list(A)
+    A, B = list(input().split())
+    # print(A, B)
     B_num = len(B)
     A_num = len(A)
-    temp = []
-    result = ""
-    for char in range(0, A_num, B_num):
-        if 
+    i = 0
+    cnt = 0
+    result = ''
+    while i <= A_num-1:
+        if A[i:i+B_num] == B:
+            cnt +=1
+            i += B_num
         else:
-            result.append(A[char:char+B_num])
+            result += A[i]
+            i += 1
 
-    print(f'#{tc}', len(result)+1)
+    result = cnt + len(result)
+
+    print(f'#{tc}', result)
