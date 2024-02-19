@@ -43,18 +43,21 @@ def carrot_counting(carrots, N):
     middle = []
     small = []
 
+    maxv = 0
     # 선택 정렬을 사용하여 당근을 오름차순으로 정렬
     for i in range(N):
         minv = carrots[i]
         minp = i
         maxv = carrots[i]
-        for j in range(N):
+        for j in range(i, N):
             if minv > carrots[j]:
                 minv = carrots[j]
                 minp = j
-            carrots[j], carrots[minp] = carrots[minp], carrots[j]
+                carrots[j], carrots[minp] = carrots[minp], carrots[j]
             if maxv < carrots[j]:
                 maxv = carrots[j]
+
+    print(carrots)
 
     # 당근의 개수를 세는 counting 정렬 수
     carrots_num = [0]*(maxv+1)
