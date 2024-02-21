@@ -13,7 +13,7 @@ for tc in range(1, T+1):
 
 
     N = int(input())
-    Tree = [[0] for _ in range(N)]
+    # Tree = [[0] for _ in range(N)]
     left_child = [0] * (N+1)
     right_child = [0] * (N+1)
     Data = [0] * (N+1)
