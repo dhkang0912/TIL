@@ -18,7 +18,7 @@ def postorder(root):
     if Tree[root] in ['+', '-', '*', '/']:
         v1 = postorder(Tree[root][1])
         v2 = postorder(Tree[root][2])
-        calc(v1, v2, Tree[root][0])
+        return calc(v1, v2, Tree[root][0])
 
 
 T = 1
@@ -29,6 +29,6 @@ for tc in range(1, T+1):
         lst = input().split()
         no = int(lst[0])
         Tree[no] = lst[1:] # Tree[no] -> Tree[no][0] = no 부모의 값, Tree[no][1] = 왼자 인덱스, Tree[no][2] = 우자 인덱스
-    # print(Tree)
+    print(Tree)
 
-    postorder(1)
+    print(postorder(1))
