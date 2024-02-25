@@ -10,6 +10,7 @@ def change(switch_info):
     else:
         switch_lst[switch_info] = 1
 
+
 for tc in range(student_num):
     sex, switch_info = map(int, input().split()) # 성별, 스위치 정보
 
@@ -18,32 +19,37 @@ for tc in range(student_num):
             if i % switch_info == 0:
                 change(i)
     elif sex == 2:
-        start = switch_info - 1
-        end = switch_info + 1
-
-        max_cnt = 0
+        start = switch_info
+        end = switch_info
         max_start = 0
         max_end = 0
 
         while start >= 1 and end <= switch_num:
-            cnt = 0
             if switch_lst[start] == switch_lst[end]:
-                for i in range(len(switch_lst[start:end+1])):
-                    if switch_lst[start + i] == 1:
-                        cnt += 1
-                    if max_cnt < cnt:
-                        max_cnt = cnt
-                        max_start = start+i
+                max_start = start
+                max_end = end
+                start -= 1
+                end += 1
             else:
                 break
-            start -= 1
-            end += 1
 
-        if max_start == 0:
-            change(switch_info)
-        else:
-            for i in range(max_start, max_end+1):
-                change(i)
+        for num in range(max_start,max_end+1):
+            change(num)
+
+# switch_lst = switch_lst[1:]
+# print_num = 20
+# start_idx = 0
+# end_idx = start_idx+print_num
+# while len(switch_lst) > 0:
+#     if len(switch_lst) <= 20:
+#         print(*switch_lst)
+#     else:
+#         print(*switch_lst[start:end_idx])
+#         start_idx += 20
+#         switch_lst = switch_lst[start_idx:end_idx]
 
 
-print(*switch_lst[1:])
+for print_num in range(1, switch_num+1, 20):
+    print(*switch_lst[print_num:print_num+20])
+    if print_num % 20 == 0:
+        print()
