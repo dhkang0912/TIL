@@ -22,6 +22,7 @@ minv 지정하고 시작 큰 수로
     3. min(minv, cnt)한 걸 minv에 지정
 '''
 
+'''
 N, M = map(int, input().split()) # M*N
 arr = [list(input()) for _ in range(N)]
 # print(arr)
@@ -40,5 +41,48 @@ for row in range(M):
         minv = min(minv, cnt)
 
 print(minv)
+'''
+'''
+처음에는 이차원 리스트를 돌면서 체크하려고 했지만 그렇게는 되지 않는 문제로, 정말 모든 경우의 수를 체크해야했다.
+white, black board 경우 모두를 체크해서 더 바꿀 게 적은 경우를 확인해야했다.
+시작점을 기준으로 white, black일 때를 체크하니 오히려 개수가 맞지 않았다.
+white, black board를 이런 식으로 구현할 생각을 해본 건 좋은 시도였다.
+
+인덱스의 패턴으로 확인한 사람들이 대부분이다.
+-> 행과 열의 합이 짝수, 홀수이면 각각 일정한 색을 가지게 됨
+https://fre2-dom.tistory.com/388
+'''
+import sys
+input = sys.stdin.readline
+
+WB = ['W', 'B']*4
+BW = ['B', 'W']*4
+white = [WB, BW] * 4
+black = [BW, WB] * 4
+# print(white)
+# print(black)
+
+M, N = map(int, input().split())
+arr = [list(input()) for _ in range(M)]
+minv = 12434e1332
+for row in range(M-8+1):
+    for col in range(N-8+1):
+        black_minv = 0
+        white_minv = 0
+        for i in range(8):
+            for j in range(8):
+                New_row = row + i
+                New_col = col + j
+                if arr[New_row][New_col] != white[i][j]:
+                    black_minv += 1
+                if arr[New_row][New_col] != black[i][j]:
+                    white_minv += 1
+
+        minv = min(minv, black_minv, white_minv)
+
+print(minv)
+
+
+
 
 
