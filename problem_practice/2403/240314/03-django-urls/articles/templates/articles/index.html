@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>안녕하세요, {{ name }}</h1>
+  {% comment %} 두개가 동일한 것 {% endcomment %}
+  <a href="{% url "articles:index" %}">dinner</a>
+  {% comment %} <a href="/dinner/}">dinner</a> {% endcomment %}
+
+  <a href=" {%url "articles:search"%} ">search</a>
+  <a href="{%url "articles:throw"%}">throw</a>
+{% endblock content %}
