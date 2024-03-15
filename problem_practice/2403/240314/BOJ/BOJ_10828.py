@@ -28,10 +28,13 @@ N = int(input())
 num = 1
 stack = []
 while num <= N:
-    order = input()
+    order = input().strip()
+    # print(order)
     if 'push' in order:
         order, n = order.split()
         n = int(n)
+        # print(order)
+        # print(n)
     if order == 'push':
         stack.append(n)
     elif order == 'top':
