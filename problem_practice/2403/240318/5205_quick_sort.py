@@ -1,3 +1,4 @@
+
 def partition_h(s, e):
     p = s #피봇을 처음으로 지정
     i = s #또는 s+1, i는 처음부터 피봇보다 작은 것들의 집합을 만들어감
@@ -12,7 +13,7 @@ def partition_h(s, e):
             j -= 1
         if i < j: # i는 피봇보다 크고, j가 피봇보다 작을 때, i가 j보다 작다면 서로 위치 이동
             numbers[i], numbers[j] = numbers[j], numbers[i]
-    numbers[p], numbers[i] = numbers[i], numbers[p] # 최종적으로 피봇 위치를 찾아줌 (첫번째와 자신보다 작은 집합 중 마지막 인덱스와 자리 변경)
+    numbers[p], numbers[j] = numbers[j], numbers[p] # 최종적으로 피봇 위치를 찾아줌 (첫번째와 자신보다 작은 집합 중 마지막 인덱스와 자리 변경)
     return j # 피봇의 위치를 반환
 
 
