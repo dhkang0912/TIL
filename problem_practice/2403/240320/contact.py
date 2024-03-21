@@ -1,3 +1,6 @@
+import sys
+sys.stdin = open("contact_input.txt", "r")
+
 # def bfs(s):
 #     Q = []
 #     visited = [False] * 101
@@ -35,8 +38,8 @@ def bfs(s):
             resV = max(resV, v)
         for w in G[v]:
             if not visited[w]:
-                Q.append(w)
-                visited[w] = visited[v]+1
+                Q.append((w, cnt+1))
+                visited[w] = 1
 
 
 T = 10
@@ -52,3 +55,4 @@ for tc in range(1, T+1):
         G[v1].add(v2)
 
     bfs(M) # 시작값을 넣어줌
+    print(resV)
