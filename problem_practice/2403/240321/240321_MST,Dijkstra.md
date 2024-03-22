@@ -270,7 +270,7 @@ def dijkstra(start):
     while pq:
         # 최단 거리 노드에 대한 정보
         dist, now = heappop(pq)
-
+                                         
         # now가 이미 더 짧은 거리로 온 적이 있다면 pass
         if distance[now] < dist:
             continue
