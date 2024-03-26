@@ -6,7 +6,7 @@
 - 사용하는 언어가 다르기 때문에 소통이 불가하지만 Django에 내장된 ORM이 중간에서 이를 해석해줌
 
 
-##QuerySet API
+## QuerySet API
 - ORM에서 데이터를 검색, 필터링, 정렬 및 그룹화하는데 사용하는 도구
 - API를 사용하여 SQL이 아닌 Python 코드로 데이터를 처리  
   
@@ -25,7 +25,15 @@
 ## QuerySet API는?
 - python의 모델 클래스와 인스턴스를 활용해 DB에 데이터를 저장, 조회, 수정, 삭제하는 것  
 = CRUD
-  
+
+## 외부 라이브러리 설치 및 설정
+1. pip install ipython
+2. pip install django-extensions
+3. pip freeze > requirements.txt
+4. settings에서 'django_extensions' 앱 등록해주기
+5. python manage.py shell_plus
+
+
 ## 대표적인 조회 메서드
 ### 1. Return new QuerySets
 - all(): 전체 데이터 조회

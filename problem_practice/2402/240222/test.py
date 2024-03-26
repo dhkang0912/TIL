@@ -28,15 +28,26 @@ def hexTodec(s):
 
 
 # 십진수를 16진수로 만들어 return
-def decTohex(inv):
+# def decTohex(inv):
+#     s = ''
+#     while intV > 0:
+#         r = intv % 16
+#         if r < 10:
+#             s = str(inv % 16) + s
+#         else:
+#             s = chr((r - 10) + ord('A'))
+#         intV //= 16
+#     return s
+
+def decTohex(intv):
     s = ''
-    while intV > 0:
+    while intv > 0:
         r = intv % 16
         if r < 10:
-            s = str(inv % 16) + s
+            s = str(r) + s
         else:
-            s = chr((r - 10) + ord('A'))
-        intV //= 16
+            s = chr((r - 10) + ord('A')) + s
+        intv //= 16
     return s
 
 
@@ -48,12 +59,12 @@ def hexTobin(s):
 
 s = '11001'
 
-print(binTodec(s))
-print(binTobin(25))
-
-print(hexTodec(s))
-print(hexTodec('A0'))
+# print(binTodec(s))
+# print(binTobin(25))
+#
+# print(hexTodec(s))
+# print(hexTodec('A0'))
 print(decTohex(160))
 
-hexs = 'AA0'
-print(hexTobin(hexs))
+# hexs = 'AA0'
+# print(hexTobin(hexs))
