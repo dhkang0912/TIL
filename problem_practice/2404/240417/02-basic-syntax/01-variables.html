@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // let
+    let number = 10
+    // 재할당은 가능
+    number = 20
+    // 재선언 불가능
+    let number = 100 //Uncaught SyntaxError: Identifier 'number' has already been declared (at 01-variables.html:17:9)
+    let number
+    console.log(number) //undefined, 에러가 나진 않음
+
+    // const
+    const secondNumber = 10
+    // 재할당 불가능
+    secondNumber = 20 // Uncaught TypeError: Assignment to constant variable.
+    // 재선언 불가능
+    const secondNumber = 30 // 01-variables.html:24 Uncaught SyntaxError: Identifier 'secondNumber' has already been declared (at 01-variables.html:24:11)
+    // 초기 값이 반드시 작성되어야 함
+    const thirdNumber //'const' declarations must be initialized.
+
+  </script>
+</body>
+
+</html>
