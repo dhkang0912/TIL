@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #outerouter {
+      width: 300px;
+      height: 300px;
+      background-color: yellowgreen;
+    }
+
+    #outer {
+      width: 200px;
+      height: 200px;
+      background-color: crimson;
+    }
+
+    #inner {
+      width: 100px;
+      height: 100px;
+      background-color: skyblue;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="outerouter">
+    outerouter
+    <div id="outer">
+      outer
+      <div id="inner">inner</div>
+    </div>
+  </div>
+
+  <script>
+    const outerOuterElement = document.querySelector('#outerouter')
+    const outerElement = document.querySelector('#outer')
+    const innerElement = document.querySelector('#inner')
+
+    const clickHandler = function (event) {
+      console.log('currentTarget:', event.currentTarget.id)
+      console.log('target:', event.target.id)
+    }
+
+    // outerouter에만 eventListener가 있지만 버블링을 통해 상위까지 전달됨
+    // 계속 버블링하여 상위에 올라가서 currentTarget: outerouter가 나옴
+    // 하지만 진짜 클릭한 영역을 나타내는 target은 매번 변함
+
+    // 버블링이 이뤄지기 전에 캡쳐링을 통해 하단으로 내려감, 타겟을 찾으면 버블링을 통해 상위로 올라옴
+    outerOuterElement.addEventListener('click', clickHandler)
+  </script>
+</body>
+
+</html>
