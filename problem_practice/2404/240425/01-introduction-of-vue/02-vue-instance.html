@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- ref를 html에서 사용할 때는 템플릿만 써도 가능 -->
+    <!-- 템플릿 렌더링 Mustache syntax (콧수염 구문)를 사용하여 메시지 값을 기반으로 동적 텍스트를 렌더링 -->
+    <h1>{{message}}</h1>
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    // Vue의 createApp이라는 동일한 이름의 메소드를 할당하는 것
+    // ref()는 반응형 상태(reactive reference)를 나타내는 것, ref라는 객체를 만들어줌
+    const { createApp, ref } = Vue 
+
+    // 여기 app 이름은 변수명으로 변경 가능, 그렇지만 일반적으로 app이라는 이름으로 활용
+    // 생성자 함수 역할을 함, 인스턴스 생성
+
+    // createApp()에 전달되는 객체는 Vue 컴포넌트
+    const app = createApp({
+      // 템플릿의 참조를 접근려하려면 setup 함수에서 선언 및 반환이 필요
+      // 편의상 템플릿에서 ref를 사용할 때는 .value를 안 해도 automaticallyunwrapping을 해줘서 그냥 접근 가능
+      setup() {
+        const message = ref('Hello Vue!')
+        console.log(message)
+        console.log(message.value)
+
+        return {
+          message
+        }
+      }
+    })
+
+    // 인스턴스와 HTML 요소를 연결 (탑재), 하나의 app은 하나의 영역과만 mount 가능
+    app.mount('#app')
+  </script>
+</body>
+
+</html>
