@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <p>{{ inputText1 }}</p>
+    <!-- <input value="ssafy"> -->
+    <input :value="inputText1" @input="onInput">
+
+    <p>{{ inputText2 }}</p>
+    <!-- IME가 필요한 한국어, 중국어, 일본어 등의 경우 v-model이 제대로 진행되지 않음 -->
+    <input v-model="inputText2">
+    
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const { createApp, ref } = Vue
+
+    const app = createApp({
+      setup() {
+        const inputText1 = ref('')
+        const inputText2 = ref('')
+
+        // input의 value 값을 계속해서 반응형 변수 inputText1에 할당을 하는 함수
+        const onInput = function(event){
+          inputText1.value = event.currentTarget.value
+        }
+
+        return {
+          inputText1,
+          inputText2,
+          onInput,
+        }
+      }
+    })
+
+    app.mount('#app')
+  </script>
+</body>
+
+</html>

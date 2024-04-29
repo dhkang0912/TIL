@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- Inline Handlers -->
+    <button v-on:click="count++">Add 1</button>
+    <!-- <button @click="count++">Add 1</button> -->
+    <p>Count: {{ count }}</p>
+
+    <!-- Method Handlers -->
+    <button @click="myFunc">Hello</button>
+
+    <!-- Calling Methods in Inline Handlers -->
+    <!-- 임의 인자를 넣은 경우 기본 event는 없어짐, 대신 임의 인자를 쓸 수 있음 -->
+    <button @click="greeting('hello')">Say hello</button>
+    <button>Say bye</button>
+
+    <!-- Accessing Event Argument in Inline Handlers -->
+    <!-- $가 붙은 인자는 뷰에서 제공하는 built-in 변수 -->
+    <!-- 없어진 기본 인자인 event를 대신하여 빌트인 변수 넣어줌 -->
+    <button @click="warning('경고입니다.', $event)">Submit</button>
+
+    <!-- event modifiers -->
+    <!-- event마다 수식어가 다르다 -->
+    <form @submit.prevent="onSubmit">...</form>
+    <a @click.stop.prevent="onLink">...</a>
+
+    <!-- key modifiers -->
+    <input @keyup.enter="onSubmit">
+
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const { createApp, ref } = Vue
+
+    const app = createApp({
+      setup() {
+        const count = ref(0)
+        const name = ref('Alice')
+
+        const myFunc = function(event){
+          console.log(event)
+          console.log(event.currentTarget)
+          // ${name}은 ref object가 나옴, .value를 해줘야만 원하는 text가 나옴
+          console.log(`Hello, ${name.value}`)
+        }
+
+        // event 대신 대신 사용자 지정 인자를 넣을 수 있음
+        const greeting = function(message){
+          console.log(message)
+          // 이게 왜 나오는거지?
+          console.log(event)
+        }
+
+        const warning = function(message, event) {
+          console.log(message)
+          console.log(event)
+        }
+
+        return {
+          count,
+          name,
+          myFunc,
+          greeting,
+          warning
+        }
+      }
+    })
+
+    app.mount('#app')
+  </script>
+</body>
+
+</html>

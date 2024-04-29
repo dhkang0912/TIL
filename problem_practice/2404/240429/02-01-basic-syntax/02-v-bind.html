@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- v-bind: 넣으면 문자열이 아님, 속성값이 동적으로 변함, 생략구문 존재 -->
+    <img v-bind:src="imageSrc" alt="#">
+    <!-- v-bind:의 생략구문(약어)는 : -->
+    <img :src="imageSrc" alt="#">
+
+    <a v-bind:href="myUrl">이동!!</a>
+
+    <p :[dynamicattr]="dynamicValue">....</p>
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const { createApp, ref } = Vue
+
+    const app = createApp({
+      setup() {
+        const imageSrc = ref('https://picsum.photos/200')
+        const myUrl = ref('https://www.google.co.kr/')
+        // 일반적인 자바스크립트의 변수명이면 camel Case로 작성해야함, 속성의 이름은 소문자만 인식해서 소문자로 적음
+        const dynamicattr = ref('title')
+        const dynamicValue = ref('Hello Vue.js')
+        return {
+          imageSrc,
+          myUrl,
+          dynamicattr,
+          dynamicValue
+        }
+      }
+    })
+
+    app.mount('#app')
+  </script>
+</body>
+
+</html>
