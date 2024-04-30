@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <button @click="count++">Add 1</button>
+    <p>Count: {{ count }}</p>
+    <p>{{ message }}</p>
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const { createApp, ref, onMounted, onUpdated } = Vue
+
+    const app = createApp({
+      setup() {
+        const count = ref(0)
+        const message = ref(null)
+
+        // 실행될 때 하고 싶은 걸 이걸 통해서 작성
+        // 이걸 콜백함수로 넣으면 안됨
+        // 동기적으로 작성되어야 함, 생애주기의 타이밍에 실행되기 때문
+        onMounted(()=>{
+          console.log('mounted')
+        })
+
+        onUpdated(()=>{
+          message.value = `count가 ${count.value}로 수정됨!!`
+        })
+
+        return {
+          count,
+          message
+        }
+      },
+    })
+
+    app.mount('#app')
+
+  </script>
+</body>
+
+</html>

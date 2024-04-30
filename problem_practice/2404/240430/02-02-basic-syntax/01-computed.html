@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h2>남은 할 일</h2>
+    <p>{{ todos.length > 0 ? '아직 남았다' : '퇴근!' }}</p>
+
+    <p>{{ restOfTodos }}</p>
+    <p>{{ getRestOfTodos() }}</p>
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const { createApp, ref, computed } = Vue
+
+    const app = createApp({
+      setup() {
+        const todos = ref([
+          { text: 'Vue 실습' },
+          { text: '자격증 공부' },
+          { text: 'TIL 작성' }
+        ])
+
+        // computed ref 객체로 만들어짐, 이것도 value를 통해 접근 가능함
+        // 템플릿에서는 자동으로 언래핑됨
+        // computed는 늘 의존적으로 생성됨, 의존된 반응형 데이터를 자동으로 추정, 의존하는 데이터가 변경될 때만 재평가됨
+        const restOfTodos = computed(()=>{
+          return todos.value.length > 0 ? '아직 남았다' : '퇴근!'
+        })
+
+        // console.log(restOfTodos.value)
+
+        // computed가 했던 일을 method도 동일하게 할 수 있음
+        // 다만 computed는 의존된 반응형 데이터를 기반으로 변경 전까지는 캐시로 저장되어있음 => 이미 계산된 결과에 대해 여러 참조는 평가할 필요 없이 이전 계산된 결과를 즉시 반환함
+        // method는 다시 렌더링이 발생할 때마다 항상 계산이 됨
+        const getRestOfTodos = function(){
+          return todos.value.length > 0 ? '아직 남았다' : '퇴근!'
+        }
+
+        // computed는 읽기 전용 속성
+        // Write operation failed: computed value is readonly
+        // const a = ref(0)
+        // const b = computed(() => {
+        //   return a.value + 1
+        // })
+        // console.log(b.value++)
+
+        return {
+          todos,
+          restOfTodos,
+          getRestOfTodos,
+        }
+      }
+    })
+
+    app.mount('#app')
+  </script>
+</body>
+
+</html>
