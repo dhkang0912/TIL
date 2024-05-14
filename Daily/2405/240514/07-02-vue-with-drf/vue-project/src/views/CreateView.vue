@@ -30,6 +30,9 @@ const createArticle = function () {
   axios({
     method: 'post',
     url: `${store.API_URL}/api/v1/articles/`,
+    headers:{
+      Authorization:`Token ${store.token}`
+    },
     data: {
       title: title.value,
       content: content.value
