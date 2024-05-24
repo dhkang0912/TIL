@@ -1,0 +1,84 @@
+
+@font-face {
+    font-family: 'logo';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Jacques Francois Shadow Regular'), url('JacquesFrancoisShadow-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: '속초';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2402_1@1.0/SokchoBadaBatang.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* @font-face {
+    font-family: '기본';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/Orbit-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+} */
+
+/* @font-face {
+    font-family:'기본';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Bold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+} */
+
+/* @font-face {
+    font-family: '기본';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulMyungjo-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+} */
+
+/* @font-face {
+    font-family: '기본';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/Hahmlet-SemiBold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+} */
+
+@font-face {
+    font-family: '기본';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+.jacques-francois-shadow-regular {
+    font-family: "Jacques Francois Shadow", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.logo {
+    font-family: "Jacques Francois Shadow", serif;
+}
+
+nav {
+    font-family: '기본';
+}
+
+footer {
+    font-family: '기본';
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+#app {
+    min-width: 500px;
+}
+
+.tagify {
+    min-width: 500px;
+    min-height: 35px;
+}

@@ -1,0 +1,34 @@
+[
+{
+    "model": "socialaccount.socialapp",
+    "pk": 1,
+    "fields": {
+        "provider": "google",
+        "provider_id": "",
+        "name": "Google",
+        "client_id": "449039201112-amj952hsehpk22e4lrfkobaqlj3sjca9.apps.googleusercontent.com",
+        "secret": "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",
+        "key": "",
+        "settings": {},
+        "sites": [
+            1
+        ]
+    }
+},
+{
+    "model": "socialaccount.socialapp",
+    "pk": 2,
+    "fields": {
+        "provider": "kakao",
+        "provider_id": "",
+        "name": "Kakao",
+        "client_id": "579878fa31185cfe6067272f1cffcdd2",
+        "secret": "",
+        "key": "",
+        "settings": {},
+        "sites": [
+            1
+        ]
+    }
+}
+]
