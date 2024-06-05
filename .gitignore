@@ -1,8 +1,6 @@
 # Created by https://www.toptal.com/developers/gitignore/api/windows,django,macos,python,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,django,macos,python,visualstudiocode
 
-*.img
-*.png
 
 ### macOS ###
 # General
