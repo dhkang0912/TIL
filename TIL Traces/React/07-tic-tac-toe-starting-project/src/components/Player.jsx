@@ -1,6 +1,7 @@
 import { useState } from "react"
 
-export default function Player({ initialName, symbol }) {
+// isActive 클래스를 true, false로 받음
+export default function Player({ initialName, symbol, isActive }) {
     // 초기값을 매개변수로 받고, 그 이후는 useState를 통해서 변경된 값과, 변경 값을 적용할 함수를 지정
     const [playerName, setPlayerName] = useState(initialName)
     const [isEditing, setIsEditing] = useState(false)
@@ -28,7 +29,8 @@ export default function Player({ initialName, symbol }) {
     }
 
     return (
-            <li>
+        // 삼항연산자를 통해서 isActive가 true라면 해당 className을 active하고 그렇지 않다면 undefined를 통해 나타나지 않게 함
+            <li className={isActive ? 'active' : undefined}>
                 <span id="player">
                     {editablePlayerName}
                     <span className="player-symbol">{symbol}</span>
