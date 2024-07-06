@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 // isActive 클래스를 true, false로 받음
-export default function Player({ initialName, symbol, isActive }) {
+export default function Player({ initialName, symbol, isActive, onChangeName }) {
     // 초기값을 매개변수로 받고, 그 이후는 useState를 통해서 변경된 값과, 변경 값을 적용할 함수를 지정
     const [playerName, setPlayerName] = useState(initialName)
     const [isEditing, setIsEditing] = useState(false)
@@ -9,7 +9,11 @@ export default function Player({ initialName, symbol, isActive }) {
         // 삼항연산자를 통해서 isEditing이 true면 false로 바꾸고, false면 true로 바꿈
         // setIsEditing(isEditing ? false : true)
         // !을 통해 값을 반대로 반전함
+        
         setIsEditing((editing)=>!editing)
+        if (isEditing) {
+            onChangeName(symbol, playerName )
+        }
     }
 
     function handleChange(event){

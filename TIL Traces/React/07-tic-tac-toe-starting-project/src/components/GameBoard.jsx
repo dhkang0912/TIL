@@ -1,22 +1,6 @@
-const initialGameBoard = [
-    [null, null, null],
-    [null, null, null],
-    [null, null, null],
-]
 
 // activePlayerSymbol을 매개변수로 받아서 현재 활성화된 symbol의 정보를 가져옴
-export default function GameBoard({onSelectSquare, turns }) {
-    let gameBoard = initialGameBoard
-
-    // 초기값일 때는 array를 만들지 않고 값이 있을 때만 만들기 위해 반복문을 씀
-    // 만약 비어있다면 반복할 게 없어서 해당 for문이 돌지 않을 것
-    for (const turn of turns){
-        // 중첩 객체 {{}, {}, {}} <= 이런 형식이기 때문에 한 객체씩 반복되어 풀어서 사용할 수 있도록 반복문 사용
-        const {square, player} = turn
-        const {row, col} = square 
-        // 현재 선택된 row, col 위치에 player symbol 보여주기
-        gameBoard[row][col] = player
-    }
+export default function GameBoard({onSelectSquare, board  }) {
 
     // 상위 컴포넌트로 State Lifting up이 필요하여 주석처리 함
     // 직접적으로 원본 배열을 수정하는 것을 지양해야함, 자바스크립트에서 원본 배열, 
@@ -37,12 +21,12 @@ export default function GameBoard({onSelectSquare, turns }) {
     return (
         <ol id="game-board">
             {/* map method는 배열을 반복하여 풀어주며, 인덱스를 함께 반환할 수 있다 (반복하여 풀린 요소, 인덱스) */}
-            {gameBoard.map((row, rowIndex) => (
+            {board.map((row, rowIndex) => (
                 <li key={rowIndex}>
                     <ol>
                         {row.map((playerSymbol, colIndex) => (
                             <li key={colIndex}>
-                                <button onClick={()=>{onSelectSquare(rowIndex, colIndex)}}>{playerSymbol}</button>
+                                <button onClick={()=>{onSelectSquare(rowIndex, colIndex)}} disabled={playerSymbol!==null}>{playerSymbol}</button>
                             </li>
                         ))}
                     </ol>
