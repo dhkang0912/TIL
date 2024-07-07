@@ -9,9 +9,11 @@ export default function Player({ initialName, symbol, isActive, onChangeName }) 
         // 삼항연산자를 통해서 isEditing이 true면 false로 바꾸고, false면 true로 바꿈
         // setIsEditing(isEditing ? false : true)
         // !을 통해 값을 반대로 반전함
-        
+
         setIsEditing((editing)=>!editing)
+        // 현재 수정 중이라면 
         if (isEditing) {
+            // 입력 받은 playerName을 통해 playername 변경
             onChangeName(symbol, playerName )
         }
     }
