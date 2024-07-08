@@ -13,6 +13,7 @@ const Register = () => {
     bio: "",
   });
 
+  // git upload
   const onChange = (e)=>{
     setInput({
       ...input,
