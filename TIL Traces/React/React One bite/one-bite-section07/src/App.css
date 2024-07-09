@@ -1,0 +1,20 @@
+/* 개발자 도구에서 영역을 확인할 수 있음 */
+/* padding : 내부 여백, 초록색 */
+/* margin : 외부 여백, 주황색 */
+
+body {
+  padding: 20px;
+}
+
+.App {
+  margin: 0 auto;
+  width: 400px;
+}
+
+.App > section {
+  background-color: rgb(245,245,245);
+  border: 1px solid rgb(240,240,240);
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 10px;
+}
