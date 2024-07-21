@@ -124,3 +124,7 @@ https://www.notion.so/gyubeomseo/d26af82a1c884732b58bdd67f28e263e?pvs=4
 
 ![Alt text](image-4.png)
 https://www.notion.so/gyubeomseo/262a57ff158a4608844357a0c8b258a2?pvs=4
+
+### ※ 시연 영상
+https://github.com/user-attachments/assets/ea5edbc9-a65a-4e88-9764-6c964e372b1e
+
