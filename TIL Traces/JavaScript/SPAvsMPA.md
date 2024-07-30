@@ -1,5 +1,18 @@
 # SPA vs MPA
 - [SPA vs MPA](#spa-vs-mpa)
+  - [SPA](#spa)
+    - [SPA (Single Page Application)](#spa-single-page-application)
+    - [작동방식](#작동방식)
+    - [장점](#장점)
+    - [단점](#단점)
+  - [MPA](#mpa)
+    - [MPA (Multi Page Application)](#mpa-multi-page-application)
+    - [작동방식](#작동방식-1)
+    - [장점](#장점-1)
+    - [단점](#단점-1)
+  - [선택하는 기준](#선택하는-기준)
+  - [참고 자료](#참고-자료)
+
 
 ## SPA
 ### SPA (Single Page Application)
