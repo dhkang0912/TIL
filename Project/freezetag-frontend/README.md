@@ -56,7 +56,7 @@
 
 # **사용 기술 스택**
 
-- 리액트
+- React
 - OpenVidu
 - WebSocket
 - Teachable Machine
