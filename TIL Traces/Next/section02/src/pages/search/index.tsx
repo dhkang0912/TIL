@@ -1,7 +1,8 @@
 // useRouter는 두가지가 있음 (router, navigator에서 가져오는 방식)
 // router에서 가져오는 경우 = page router, navigator에서 가져오는 방식 = app router
 import { useRouter } from "next/router";
-import React from "react";
+import React, { ReactNode } from "react";
+import SearchableLayout from "@/components/searchable-layout";
 
 export default function Page() {
   // query string을 오는 법
@@ -11,3 +12,7 @@ export default function Page() {
 
   return <h1>Search {q}</h1>;
 }
+
+Page.getLayout = (page:ReactNode) => {
+  return <SearchableLayout>{page}</SearchableLayout>;
+};
