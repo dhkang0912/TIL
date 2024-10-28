@@ -18,6 +18,13 @@
   - [Fallback 옵션 - false](#fallback-옵션---false)
     - [Fallback 옵션 - blocking](#fallback-옵션---blocking)
     - [Fallback 옵션 - true](#fallback-옵션---true)
+  - [24강 ISR(Incremental Static Regeneration) : 증분 정적 재 생성](#24강-isrincremental-static-regeneration--증분-정적-재-생성)
+  - [25강 주문형 재검증 (On-Demand-ISR)](#25강-주문형-재검증-on-demand-isr)
+  - [26강 SEO 설정하기](#26강-seo-설정하기)
+  - [27강 배포하기](#27강-배포하기)
+  - [28강 페이지 라우터 정리](#28강-페이지-라우터-정리)
+    - [Page router의 장점](#page-router의-장점)
+    - [Page router의 단점](#page-router의-단점)
 
 ### 17강 사전 렌더링과 데이터 페칭
 #### 리액트 VS 넥스트
@@ -216,7 +223,107 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
 - 대신 백엔드 서버에 받아와야 하는 내용이 많다면 새로 생성하여 정보를 보여주기 전까지 로딩이 걸림
 
 #### Fallback 옵션 - true
-![!\[alt text\](image.png)](<fallback-true 옵션.png>)
+- ![!\[alt text\](image.png)](<fallback-true 옵션.png>)
 - blocking 옵션의 단점인 로딩을 해결하기 위해 우선 props가 없는 페이지를 반환함
 - 이후 props만 먼저 계산하여 데이터만 다시 보내줌
 - 즉, UI를 먼저 렌더링하고 데이터를 나중에 다시 보내주는 것
+
+### 24강 ISR(Incremental Static Regeneration) : 증분 정적 재 생성
+![!\[alt text\](image.png)](<ISR 동작방식.png>)
+- SSG 방식으로 생성된 정적 페이지를 일정 시간을 주기로 다시 생성하는 기술
+- 사전에 생성된 페이지만 반환되어 속도는 빠르지만 최신 데이터를 적용하기 어려움 => 이를 해소하기 위해 ISR을 사용
+- ISR을 사용하면 유효기간을 지정하여 그 이후부터는 다시 페이지를 정적으로 생성하면서 새로 업데이트 된 페이지를 가져올 수 있음
+  - 만약 유효기간이 60초라면 60초 이후에 첫 요청 시 이전과 동일한 페이지를 반환하고 그 이후 서버에 새로 생성하도록하여 업데이트된 방식을 반영하여 반환하게 됨
+- 매우 빠른 속도로 응답이 가능한 SSG 방식의 장점 + 최신 데이터 반영 가능한 SSR 방식의 장점
+```js
+export const getStaticProps = async () => {
+  console.log("인덱스 페이지");
+
+  // 인수로 전달한 배열 안에 들어있는 모든 비동기 함수들을 동시에 실행시킴
+  const [allBooks, recoBooks] = await Promise.all([
+    fetchBooks(),
+    fetchRandomBooks(),
+  ]);
+  return {
+    props: {
+      allBooks,
+      recoBooks,
+    },
+    // 이렇게 재검증하는 유효기간을 정해주면 그 기간이 지나면 다시 SSG 방식으로 페이지를 반환한다
+    // 어떻게 보면 리액트 쿼리랑 비슷한 방식이라고 느껴진다.
+    revalidate:3,
+  };
+};
+```
+
+### 25강 주문형 재검증 (On-Demand-ISR)
+- 요청을 받을 때마다 페이지를 다시 생성하는 ISR
+- 페이지의 업데이트를 직접 트리거링  해줄 수 있음
+- 아래와 같이 특정 api를 호출했을 때 (api/revalidate) 특정한 페이지가 재생성되게 하여 업데이트된 페이지를 반환하게 할 수 있음
+  - 개인적으로 진짜 리액트 쿼리 revalidate 하는 방식과 동일하다고 느낌
+```js
+import { NextApiRequest, NextApiResponse } from "next";
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  try {
+    await res.revalidate("/ ");
+    return res.json({ revalidate: true });
+  } catch (err) {
+    res.status(500).send("Revalidation Failed");
+  }
+}
+```
+
+### 26강 SEO 설정하기
+- ```import Head from "next/head";``` 이걸 추가하고 return되는 UI 제일 상단에 <HEAD></HEAD>를 활용하여 meta 데이터 작성
+- 로딩 중이더라도 기본적인 메타 태그들이 보일 수 있도록 설정
+```js
+export default function Page({
+  book,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
+  const router = useRouter();
+  if (router.isFallback) {
+    return (
+      // 로딩 중이더라도 기본적인 메타 태그들이 보일 수 있게 설정
+      <>
+        <Head>
+          <title>한입 북스</title>
+          <meta property="og:image" content="/thumbnail.png" />
+          <meta property="og:title" content="한입북스" />
+          <meta
+            property="og:description"
+            content="한입북스에 등록된 도서들을 만나보세요 "
+          />
+        </Head>
+        <div>"로딩 중입니다"</div>
+      </>
+    );
+  }
+  if (!book) return "문제가 발생했습니다 다시 시도하세요";
+  ```
+
+### 27강 배포하기
+- ```npm install -g vercel```
+- ```vercel login```
+- ```vercel --prod```
+
+### 28강 페이지 라우터 정리
+#### Page router의 장점
+- 파일 시스템 기반의 간편한 페이지 라우팅 제공
+- 다양한 방식의 사전 렌더링 제공
+  1. 서버 사이드 렌더링 (SSR)
+   - 요청이 들어올 때마다 사전 렌더링을 진행함
+  2. 정적 사이트 생성 (SSG)
+   - 빌드 타임에 미리 사전 렌더링을 해놓음
+  3. 증분 정적 재생성 (ISR)
+   - SSG 페이지를 일정 시간마다 재생성
+
+#### Page router의 단점
+- 페이지별 레이아웃 설정이 번거로움
+- 데이터 페칭이 페이지 컴포넌트에 집중됨 
+  - (데이터 페칭을 페이지에서 받아와서 하단의 자식 컴포넌트들에 props로 모두 넘겨줘야 함)
+- 불필요한 컴포넌트들도 JS Bundle에 포함됨
+  - 상호작용이 필요하지 않고 단순히 UI 렌더링만 해도 되는 컴포넌트도 사전 렌더링을 위해 실행하면서 JS를 실행하고 수화 과정에서 한번 더 실행하게 됨
