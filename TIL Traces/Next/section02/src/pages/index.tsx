@@ -1,11 +1,46 @@
 import { ReactNode } from "react";
 import style from "./index.module.css";
 import SearchableLayout from "@/components/searchable-layout";
-export default function Home() {
+import BookItem from "@/components/book-item";
+import { InferGetStaticPropsType } from "next";
+import fetchBooks from "@/lib/fetch-books";
+import fetchRandomBooks from "@/lib/fetch-random-books";
+
+export const getStaticProps = async () => {
+  console.log("인덱스 페이지");
+
+  // 인수로 전달한 배열 안에 들어있는 모든 비동기 함수들을 동시에 실행시킴
+  const [allBooks, recoBooks] = await Promise.all([
+    fetchBooks(),
+    fetchRandomBooks(),
+  ]);
+  return {
+    props: {
+      allBooks,
+      recoBooks,
+    },
+  };
+};
+
+export default function Home({
+  allBooks,
+  recoBooks,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <>
-      <h1 className={style.h1}>인덱스</h1>
-    </>
+    <div className={style.container}>
+      <section>
+        <h3>지금 추천하는 도서</h3>
+        {recoBooks.map((book) => (
+          <BookItem key={book.id} {...book} />
+        ))}
+      </section>
+      <section>
+        <h3>등록된 모든 도서</h3>
+        {allBooks.map((book) => (
+          <BookItem key={book.id} {...book} />
+        ))}
+      </section>
+    </div>
   );
 }
 
