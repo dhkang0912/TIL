@@ -47,7 +47,7 @@ export default function Page({
             content="한입북스에 등록된 도서들을 만나보세요 "
           />
         </Head>
-        <div>"로딩 중입니다"</div>
+        <div>로딩 중입니다</div>
       </>
     );
   }

@@ -308,6 +308,7 @@ export default function Page({
 ### 27강 배포하기
 - ```npm install -g vercel```
 - ```vercel login```
+- ```vercely```
 - ```vercel --prod```
 
 ### 28강 페이지 라우터 정리
