@@ -1,4 +1,3 @@
-import books from "@/mock/books.json";
 import BookItem from "@/components/book-item";
 import { BookData } from "@/types";
 
@@ -10,7 +9,8 @@ export default async function Page({
   // 현재 페이지에 전달해주는 현재 페이지의 query string
   const { q } = await searchParams;
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/search?q=${q}`
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/search?q=${q}`,
+    { cache: "force-cache" }
   );
   if (!response.ok) {
     return <div>오류가 발생했습니다...</div>;
