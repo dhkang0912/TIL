@@ -1,0 +1,65 @@
+@use '@/styles/constants/colors.scss' as colors;
+
+.container {
+  width: 350px;
+  height: 100vh;
+  box-shadow: inset 1px 0 0 0 colors.$gray2;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin-top: 50px;
+}
+
+.titlecontainer {
+  display: flex;
+  gap: 200px;
+  margin-top: 22px;
+  margin-left: 24px;
+  margin-bottom: 18px;
+}
+
+.title {
+  font-family: 'medium';
+  font-size: 18px;
+}
+
+.count {
+  color: colors.$blue2;
+}
+
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // align-items: flex-start; // 세로는 시작 부분에 맞춤 (필요에 따라 조정 가능)
+  z-index: 10;
+}
+
+.modalContent {
+  background-color: white;
+  // padding: 20px;
+  padding: 20px 60px;
+  margin-top: 50px;
+  display: flex;
+  left: 40%;
+  // top: 40%;
+  transform: translateX(-50%);
+  // transform: translateY(-50%);
+  max-width: 1005px;
+  width: 90%;
+  // height: 80%;
+  position: relative;
+}
+
+.xbutton {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+}
