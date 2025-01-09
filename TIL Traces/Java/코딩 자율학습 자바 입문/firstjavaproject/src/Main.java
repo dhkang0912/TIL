@@ -5,23 +5,22 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        System.out.println("학년을 입력하세요.");
-        Scanner scanGrade = new Scanner(System.in);
-        int grade = scanGrade.nextInt(); // 학년을 입력받기
-
-        if (grade == 4){
-            System.out.println("점수를 입력하세요.");
-            Scanner scanScore = new Scanner(System.in);
-            int score = scanScore.nextInt(); // 점수 입력받기
-
-            if (score >= 90){
-                System.out.println("장학금 지급 대상입니다.");
-            } else {
-                System.out.println("장학금 지급 대상이 아닙니다.");
-            }
-        } else {
-            System.out.println("장학금 지급 학년이 아닙니다.");
+        System.out.println("알파벳 소문자를 입력해주세요.");
+        Scanner input = new Scanner(System.in);
+        String alpabet = input.next();
+        switch (alpabet){
+            case ("a"):
+                System.out.println("A");
+                break;
+            case ("b"):
+                System.out.println("B");
+                break;
+            case ("c"):
+                System.out.println("C");
+                break;
+            default:
+                System.out.println("일치하는 알파벳이 없습니다.");
         }
-
+        input.close();
     }
 }
