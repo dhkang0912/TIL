@@ -5,15 +5,23 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        int score = 80;
-        if (score >= 90){
-            System.out.println("A학점입니다.");
-        } else if (score < 90 && score>=80 ){
-            System.out.println("B학점입니다.");
-        } else if (score < 80 && score>=70 ){
-            System.out.println("C학점입니다.");
+        System.out.println("학년을 입력하세요.");
+        Scanner scanGrade = new Scanner(System.in);
+        int grade = scanGrade.nextInt(); // 학년을 입력받기
+
+        if (grade == 4){
+            System.out.println("점수를 입력하세요.");
+            Scanner scanScore = new Scanner(System.in);
+            int score = scanScore.nextInt(); // 점수 입력받기
+
+            if (score >= 90){
+                System.out.println("장학금 지급 대상입니다.");
+            } else {
+                System.out.println("장학금 지급 대상이 아닙니다.");
+            }
         } else {
-            System.out.println("D학점입니다.");
+            System.out.println("장학금 지급 학년이 아닙니다.");
         }
+
     }
 }
