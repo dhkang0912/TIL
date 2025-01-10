@@ -5,9 +5,12 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        for (int i=1; i<=100; i++){
-
-            System.out.println(i);
-        }
+        int value;
+        int i = 1;
+        do {
+            value = 3*i;
+            System.out.println("3 x " + i + " = " + value);
+            i++;
+        } while (i<=9);
     }
 }
