@@ -14,6 +14,8 @@ public class Car {
         System.out.println("새로운 자동차 객체가 생성됐습니다.");
         //    인스턴스 메서드 호출
         this.carInfo();
+        countOfCars++; // 객체가 생성될 때마다 자동차 수 1 증가
+        countOfCarsInfo(); // 자동차 수량 확인 메서드 호출
     }
 
 //    매개변수 2개 있는 생성자
@@ -23,14 +25,18 @@ public class Car {
         this.year = year;
         this.color = "white";
         this.carInfo();
+        countOfCars++; // 객체가 생성될 때마다 자동차 수 1 증가
+        countOfCarsInfo(); // 자동차 수량 확인 메서드 호출
     }
 
-//    매개변수가 3개 있는 생성장
+//    매개변수가 3개 있는 생성자
     public Car(String brand, int year, String color){
         System.out.println("새로운 자동차 객체가 생성됐습니다.");
         this.brand = brand;
         this.year = year;
         this.color = color;
+        countOfCars++; // 객체가 생성될 때마다 자동차 수 1 증가
+        countOfCarsInfo(); // 자동차 수량 확인 메서드 호출
     }
 
 //    인스턴스 메서드
@@ -45,4 +51,23 @@ public class Car {
     public static void countOfCarsInfo(){
         System.out.println("자동차 수량: " + countOfCars);
     }
+
+    private int maxSpeed; // 최대 속도
+
+//    생성자
+    public Car(int maxSpeed){
+        this.maxSpeed = maxSpeed;
+        countOfCars++;
+    }
+
+//    게터 메서드
+    public int getMaxSpeed(){
+        return maxSpeed;
+    }
+
+//    세터 메서드
+    public void setMaxSpeed(int maxSpeed){
+        this.maxSpeed = maxSpeed;
+    }
+
 }
