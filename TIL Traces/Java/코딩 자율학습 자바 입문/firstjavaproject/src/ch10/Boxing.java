@@ -1,6 +1,6 @@
 package ch10;
 
-public class Main {
+public class Boxing {
     public static void main(String[] args){
         int a = 5;
         // 명시적 박싱
