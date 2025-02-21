@@ -12,7 +12,7 @@ N번 집의 색 != N-1번 집의 색 or N+1번 집의 색
 - 모든 집을 칠하는 비용의 최솟값
 '''
 
-N = int(input())
+N = int(input())Z
 RGB = [list(map(int, input().split())) for _ in range(N)]
 dp = [[0]*3 for _ in range(N)]
 # print(RGB)
