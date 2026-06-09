@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: demo
+  h2:
+    console:
+      enabled: true
+  jpa:
+    defer-datasource-initialization : true
+
+
+
+
