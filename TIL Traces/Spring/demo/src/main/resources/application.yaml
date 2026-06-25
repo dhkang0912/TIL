@@ -4,9 +4,20 @@ spring:
   h2:
     console:
       enabled: true
+  datasource:
+    generate-unique-name: false
+    url: jdbc:h2:mem:testdb
   jpa:
-    defer-datasource-initialization : true
+    defer-datasource-initialization: true
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  sql:
+    init:
+      encoding: UTF-8
 
-
-
-
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.orm.jdbc.bind: TRACE
